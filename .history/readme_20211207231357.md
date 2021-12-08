@@ -1,0 +1,51 @@
+# Quality of Life
+
+## TEAM
+
+Charlton-Hua
+Gavin-Jacobsen
+Lex-Slovik
+Rex-Oliver
+
+## Description
+
+A simply application that can provide users insight to their quality of living, in their respective geo-location, in comparison to another city. This application will run in the browser and feature dynamically updated HTML and CSS, powered by 2 external open source APIs.
+
+## User Story
+
+AS A person living in the SF Bay Area
+I WANT to use an app use an app that uses my location to tell me about the quality of living in my current location
+SO THAT I can learn more about my community
+SO THAT I can also learn more about others
+
+## APIs
+
+1. [IPSTACK](https://ipstack.com/documentation) – Locate and identify website visitors by IP address
+2. [TELEPORT](https://developers.teleport.org/api/) – Data insight to quality of life depending on city
+
+#WIREFRAME
+![wireframe](./assets/images/Quality_of_Life_wire_framing.png)
+
+## TEAM TASKS
+
+1. Setup Team Github
+
+- Add team members
+- Convert into team space prior to any adding of files
+
+2. Setup Files
+
+- README.md
+- Index.html
+- ./assets/css/style.css
+- ./assets/js/script.js
+
+3. Discuss CSS Framework to use
+
+4. Discuss MVP JS Scripting Process
+
+5. Assign Individual Tasks
+
+- HTML: basic setup / wireframing
+- CSS: basic setup / wireframing
+- SCRIPTING: setup elements, setup
