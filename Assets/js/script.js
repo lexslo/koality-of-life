@@ -1,2 +1,3 @@
 "hello charlton";
+"hello";
 // LEX
