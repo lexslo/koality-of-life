@@ -29,6 +29,14 @@ body {
     max-width: 97vm;
 }
 
+.reveal {
+    background-image: linear-gradient(to bottom right, #97b7d1, #063154);
+}
+
+.reveal a {
+    color: white;
+}
+
 footer {
     text-align: center;
     background-color:rgba(176, 214, 245, 0.6);
