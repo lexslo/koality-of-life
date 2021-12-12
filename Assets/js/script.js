@@ -23,3 +23,5 @@ var getUserLocation = function () {
 var displayUserLocation = function (city, state) {
     $("#user-ip-location").text(city + ", " + state);
 }
+
+//getUserLocation();

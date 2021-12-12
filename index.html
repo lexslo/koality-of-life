@@ -22,9 +22,12 @@
                     <h3>You Are Here: <span id="user-ip-location"></span></h3>
                 </div>
                 <div class="card-section">
-                    <label for="city">Search For A City</label>
-                    <input id ="user-entry-location" name="city" type="text" placeholder="enter your city"/>
-                    <button type="submit" class="button expanded">Search</button>
+                    <label for="city">Enter Your City</label>
+                    <input id="user-entry-location" name="city" type="text" placeholder="enter your city"/>
+                    <button type="submit" id="search-btn" class="button expanded">Search</button>
+                    <label for="compare-city">Enter a City to Compare</label>
+                    <input id="user-entry-comparison" name="compare-city" type="text" placeholder="enter a second city" />
+                    <button id="compare-btn" class="button expanded">Compare</button>
                 </div>
             </form>
             <!-- take up half width on large/med screen, take up full width on small screen-->
