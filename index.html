@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/css/style.css" />
     <title>Koality</title>
-</head>
-<body>
+  </head>
+  <body>
     <header><h1>Quality of Life</h1></header>
-    <div class = "hero">
-        <form>
-            <span id="user-ip-location"></span>
-            <label for="city">Search For A City</label>
-            <input id ="user-entry-location" name="city" type="text" placeholder="enter your city"/>
-            <button type="submit">Search</button>
-        </form>
-        <div class = "about">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione cum ipsum labore delectus est nobis libero, veritatis qui ad ipsa facilis commodi aut. Cumque optio voluptatibus, officia ipsam nobis eveniet.</p>
-        </div>
+    <div class="hero">
+      <form id="search-for-city">
+        <span id="user-ip-location"></span>
+        <label for="city">Search For A City</label>
+        <input
+          id="user-entry-location"
+          name="city"
+          type="text"
+          placeholder="enter your city"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <div class="about">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione cum
+          ipsum labore delectus est nobis libero, veritatis qui ad ipsa facilis
+          commodi aut. Cumque optio voluptatibus, officia ipsam nobis eveniet.
+        </p>
+      </div>
     </div>
     <main>
-        <div id= "user-results" class="results"></div>
-        <div id = "results-comparison" class="results"></div>
+      <div id="user-results" class="results"></div>
+      <div id="results-comparison" class="results"></div>
     </main>
     <footer><h2>&copy Koality of Life</h2></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./Assets/js/script.js"></script>
-</body>
+  </body>
 </html>
