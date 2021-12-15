@@ -2,70 +2,57 @@ var ipStackKey = "5eb2ffeb687e846fd6b8eb7245538ec9";
 var ipStack = `http://api.ipstack.com/check?access_key=${ipStackKey}`;
 var teleportCitySearch = `https://api.teleport.org/api/cities/?search=`;
 var userInputSearchForCityEl = document.querySelector("#user-entry-location");
-var userResultsEl = document.querySelector("#user-results");
 
-// dom load to run ipstack
+// on dom load, run foundation & ipstack
 $(document).ready(function () {
-  fetch(ipStack)
-    .then(function (response) {
-      response.json().then(function (data) {
-        city(data);
-      });
-    })
-    .catch(function (data) {
-      alert("Your location was not found, please use search instead.");
+  $(document).foundation();
+
+  // call ipstack API
+  fetch(ipStack).then(function (response) {
+    response.json().then(function (data) {
+      // call city function that will find city from ip address using ipstack
+      city(data);
+      displayUserLocation(data.city, data.region_code);
     });
+  });
 });
 
-// geoid function from
+function displayUserLocation(city, state) {
+  // set text display in card header to user location
+  $("#user-ip-location").text(city + ", " + state);
+  // auto fill search input with current location
+  $("#user-entry-location").val(city + ", " + state);
+  // disable search button unless user wishes to change start city
+  $("#search-btn").addClass("disabled");
+}
+
 function city(ipLocation) {
   var city = ipLocation.city;
   teleportURL = `${teleportCitySearch}hayward`;
   console.log(teleportURL);
 
+  // call on teleport api to return object with geoname some where 1000 levels deep
   fetch(teleportURL).then(function (response) {
     response.json().then(function (data) {
-      obtainUrbanCityScores(data);
+      obtainGeoID(data);
       // console.log(data);
     });
   });
-  // .catch(function (data) {
-  //   alert("Your location was not found, please use search instead.");
-  // });
 }
 
-// function manualUserCityEntry() {
-//   $("#search-for-cty").on("submit", function (event) {
-//     event.preventDefault();
-
-//     var cityname = userInputSearchForCityEl.value.trim();
-
-//     if (cityname) {
-//       getCityCoordinates(cityname, true);
-//       console.log(cityname);
-//       cityInputEl.value = "";
-//     } else {
-//       alert("Please enter a City destination");
-//     }
-//   });
-// }
-
-function obtainUrbanCityScores(data) {
+function obtainGeoID(data) {
   // console.log(data);
+  // geonameid URL some where in here and pass into obtainUrbanCityScores function
   var embeddedHREF =
     data._embedded["city:search-results"][0]["_links"]["city:item"]["href"];
-  // console.log(embeddedHREF);
+  console.log(embeddedHREF);
 
   // var urbanCity = embeddedHREF["city:urban_area"];
 
+  // run teleport api for urban city name by geonameid
   fetch(embeddedHREF).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
-      urbanCityNameTest = data["_links"]["city:urban_area"]["name"];
-      var ua = urbanCityNameTest.replace(" ", "-");
-
-      console.log(urbanCityNameTest);
-
       urbanCityName = data["_links"]["city:urban_area"]["name"];
       console.log(urbanCityName);
       displayUrbanCityData(urbanCityName);
@@ -82,7 +69,7 @@ function obtainUrbanCityScores(data) {
 
 function displayUrbanCityData(urbanCityName) {
   var cityName = urbanCityName.replaceAll(" ", "-");
-  console.log(cityName);
+  cityName = cityName.toLowerCase();
   var lifeQualityScores = `<script
   async
   class="teleport-widget-script"
@@ -94,18 +81,8 @@ function displayUrbanCityData(urbanCityName) {
   ></script>`;
 
   // // console.log(lifeQualityScores);
-
   $("#user-results").append(lifeQualityScores);
 }
-
-var displayUserLocation = function (city, state) {
-  // set text display in card header to user location
-  $("#user-ip-location").text(city + ", " + state);
-  // auto fill search input with current location
-  $("#user-entry-location").val(city + ", " + state);
-  // disable search button unless user wishes to change start city
-  $("#search-btn").addClass("disabled");
-};
 
 // enable search button if user goes to type in the first input field
 $("#user-entry-location").on("click", function () {
@@ -131,11 +108,4 @@ $("#user-entry-comparison").on("blur", function () {
   if ($(this).val() == "") {
     $("#compare-btn").addClass("disabled");
   }
-});
-
-displayUserLocation("Oakland", "CA");
-
-// initialize foundation
-$(document).ready(function () {
-  $(document).foundation();
 });
