@@ -1,99 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/css/foundation.min.css" integrity="sha512-TgmH0v8FUwmsr3yDgd5PTCgR6lRZ2Q5c7KsUNTHcoxZpOExCX16MYECIL4xdRQOhQlz7pCnZlmA4zda58QWxBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./Assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/css/foundation.min.css"
+      integrity="sha512-TgmH0v8FUwmsr3yDgd5PTCgR6lRZ2Q5c7KsUNTHcoxZpOExCX16MYECIL4xdRQOhQlz7pCnZlmA4zda58QWxBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Assets/css/style.css" />
     <title>Koality</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Quality of Life</h1>
+      <h1>Quality of Life</h1>
     </header>
 
     <section class="hero grid-container">
-        <div class="grid-x grid-margin-x">
-            <!-- take up half width on large/med screen, take up full width on small screen-->
-            <form class="cell large-6 medium-6 small-12 card">
-                <div class="card-divider">
-                    <h3>You Are Here: <span id="user-ip-location"></span></h3>
-                </div>
-                <div class="card-section">
-                    <label for="city">Enter Your City</label>
-                    <input id="user-entry-location" name="city" type="text" placeholder="New York, NY"/>
-                    <button type="submit" id="search-btn" class="button expanded disabled">Search</button>
-                    <label for="compare-city">Enter a City to Compare</label>
-                    <input id="user-entry-comparison" name="compare-city" type="text" placeholder="New York, NY" />
-                    <button id="compare-btn" class="button expanded disabled">Compare</button>
-                </div>
-            </form>
-            <!-- take up half width on large/med screen, take up full width on small screen-->
-            <div class="about cell large-6 medium-6 small-12 card">
-                <ul class="accordion" data-accordion role="tablist">
-                    <li class="accordion-item is-active " data-accordion-item>
-                       <a href = "#collapse1" role = "tab" class = "accordion-title" id = "collapse1-heading">
-                           <h4>About Koality</h4>
-                        </a>
-                       <div id = "collapse1" class = "accordion-content" role = "tabpanel" data-tab-content aria-labelledby = "panel1d-heading" data-tab-content>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ex necessitatibus fugiat officia dolor, fuga voluptatem odit dicta nihil dolorem molestias perferendis cumque. Animi eaque officia nisi et quo facilis?
-                       </div>
-                    </li>
-                    <li class = "accordion-item" data-accordion-item>
-                       <a href = "#collapse2" role = "tab" class = "accordion-title" id = "collapse2-heading">
-                           <h4>Previous Searches</h4>
-                        </a>
-                       <div id = "collapse2" class = "accordion-content" role = "tabpanel" data-tab-content aria-labelledby = "panel1d-heading" data-tab-content>
-                          No saved searches.
-                       </div>
-                    </li>
-                 </ul>
-            </div>
+      <div class="grid-x grid-margin-x">
+        <!-- take up half width on large/med screen, take up full width on small screen-->
+        <form class="cell large-6 medium-6 small-12 card">
+          <div class="card-divider">
+            <h3>You Are Here: <span id="user-ip-location"></span></h3>
+          </div>
+          <div class="card-section">
+            <label for="city">Enter Your City</label>
+            <input
+              id="user-entry-location"
+              name="city"
+              type="text"
+              placeholder="New York, NY"
+            />
+            <button
+              type="submit"
+              id="search-btn"
+              class="button expanded disabled"
+            >
+              Search
+            </button>
+            <label for="compare-city">Enter a City to Compare</label>
+            <input
+              id="user-entry-comparison"
+              name="compare-city"
+              type="text"
+              placeholder="New York, NY"
+            />
+            <button id="compare-btn" class="button expanded disabled">
+              Compare
+            </button>
+          </div>
+        </form>
+        <!-- take up half width on large/med screen, take up full width on small screen-->
+        <div class="about cell large-6 medium-6 small-12 card">
+          <ul class="accordion" data-accordion role="tablist">
+            <li class="accordion-item is-active" data-accordion-item>
+              <a
+                href="#collapse1"
+                role="tab"
+                class="accordion-title"
+                id="collapse1-heading"
+              >
+                <h4>About Koality</h4>
+              </a>
+              <div
+                id="collapse1"
+                class="accordion-content"
+                role="tabpanel"
+                data-tab-content
+                aria-labelledby="panel1d-heading"
+                data-tab-content
+              >
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
+                ex necessitatibus fugiat officia dolor, fuga voluptatem odit
+                dicta nihil dolorem molestias perferendis cumque. Animi eaque
+                officia nisi et quo facilis?
+              </div>
+            </li>
+            <li class="accordion-item" data-accordion-item>
+              <a
+                href="#collapse2"
+                role="tab"
+                class="accordion-title"
+                id="collapse2-heading"
+              >
+                <h4>Previous Searches</h4>
+              </a>
+              <div
+                id="collapse2"
+                class="accordion-content"
+                role="tabpanel"
+                data-tab-content
+                aria-labelledby="panel1d-heading"
+                data-tab-content
+              >
+                No saved searches.
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </section>
     <!-- solid dividing line -->
-    <hr class="page-divide">
+    <hr class="page-divide" />
     <!-- begin comparison section -->
     <main class="grid-container">
-        <section class="grid-x grid-margin-x city-comparison">
-            <section id="user-results" class="results cell large-6 medium-6 small-12 card">
-                <div class="card-divider">
-                    <h4>City #1<span id="user-city"></span></h4>
-                </div>
-                <div class="card-section first-city">
-                    <p>QoL info will be updated dynamically below:</p>
-                </div>
-            </section>
-            <section id="results-comparison" class="results cell large-6 medium-6 small-12 card">
-                <div class="card-divider">
-                    <h4>City #2<span id="user-comparison-city"></span></h4>
-                </div>
-                <div class="card-section second-city">
-                    <p>QoL info will be updated dynamically below:</p>
-                </div>
-            </section>
+      <section class="grid-x grid-margin-x city-comparison">
+        <section
+          id="user-results"
+          class="results cell large-6 medium-6 small-12 card"
+        >
+          <div class="card-divider">
+            <h4>City #1<span id="user-city"></span></h4>
+          </div>
+          <div class="card-section first-city">
+            <p>QoL info will be updated dynamically below:</p>
+          </div>
         </section>
+        <section
+          id="results-comparison"
+          class="results cell large-6 medium-6 small-12 card"
+        >
+          <div class="card-divider">
+            <h4>City #2<span id="user-comparison-city"></span></h4>
+          </div>
+          <div class="card-section second-city">
+            <p>QoL info will be updated dynamically below:</p>
+          </div>
+        </section>
+      </section>
     </main>
 
     <!-- modal to alert user their city isn't available for comparison -->
     <!-- setAttribute data-open="city-not-found" to an element to open reveal modal -->
 
     <div class="reveal small" id="city-not-found" data-reveal>
-        <h4>This city is not supported yet.</h4>
-        <p class="lead">Please go to <a href="https://teleport.org/cities/" target="_blank">Teleport</a> to view the list of currently supported cities.</p>
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <h4>This city is not supported yet.</h4>
+      <p class="lead">
+        Please go to
+        <a href="https://teleport.org/cities/" target="_blank">Teleport</a> to
+        view the list of currently supported cities.
+      </p>
+      <button
+        class="close-button"
+        data-close
+        aria-label="Close modal"
+        type="button"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
 
     <footer>
-        <h4>&copy2021 Koality of Life</h4>
+      <h4>&copy2021 Koality of Life</h4>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/js/foundation.min.js" integrity="sha512-+CnEgueYRDzx2s3IIAOpZd8HeOfrSbK3loeHw0jXJODAe3eFROHpBxEsun2kU+sZCaoAA0eFJrhfVV3RGG50GA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/js/foundation.min.js"
+      integrity="sha512-+CnEgueYRDzx2s3IIAOpZd8HeOfrSbK3loeHw0jXJODAe3eFROHpBxEsun2kU+sZCaoAA0eFJrhfVV3RGG50GA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="./Assets/js/script.js"></script>
-</body>
+  </body>
 </html>
