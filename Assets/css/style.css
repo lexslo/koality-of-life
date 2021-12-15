@@ -1,0 +1,43 @@
+h1, h2, h3, h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+}
+
+header {
+    text-align: center;
+    background-color:rgba(256,256,256, 0.4);
+}
+
+body {
+    background-image: url(../images/Sky-BG.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.button {
+    border-radius: 5px;
+}
+
+.page-divide {
+    border-bottom: 3px solid #bbb;
+    max-width: 97vm;
+}
+
+.reveal {
+    background-image: linear-gradient(to bottom right, #97b7d1, #063154);
+}
+
+.reveal a {
+    color: white;
+}
+
+footer {
+    text-align: center;
+    background-color:rgba(176, 214, 245, 0.6);
+}
