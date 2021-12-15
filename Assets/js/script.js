@@ -29,16 +29,18 @@ var displayUserLocation = function (city, state) {
     $("#search-btn").addClass("disabled");
 }
 
-var getCityComparison = function (lat, long) {
-
-}
-
 // enable search button if user goes to type in the first input field
 $("#user-entry-location").on("click", function() {
     if($(this).is(":focus")) {
         $("#search-btn").removeClass("disabled");
     }
 });
+// disable search button if empty input field
+$("#user-entry-location").on("blur", function() {
+    if ($(this).val() == "") {
+        $("#compare-btn").addClass("disabled");
+    }
+})
 
 // enable compare button when user types in input field
 $("#user-entry-comparison").on("click", function() {
