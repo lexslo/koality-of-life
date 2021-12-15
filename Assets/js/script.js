@@ -4,6 +4,7 @@ var teleportCitySearch = `https://api.teleport.org/api/cities/?search=`;
 var userInputSearchForCityEl = document.querySelector("#user-entry-location");
 var userResultsEl = document.querySelector("#user-results");
 
+// dom load to run ipstack
 $(document).ready(function () {
   fetch(ipStack)
     .then(function (response) {
@@ -16,9 +17,10 @@ $(document).ready(function () {
     });
 });
 
+// geoid function from
 function city(ipLocation) {
   var city = ipLocation.city;
-  teleportURL = `${teleportCitySearch}queens`;
+  teleportURL = `${teleportCitySearch}hayward`;
   console.log(teleportURL);
 
   fetch(teleportURL).then(function (response) {
@@ -58,7 +60,12 @@ function obtainUrbanCityScores(data) {
 
   fetch(embeddedHREF).then(function (response) {
     response.json().then(function (data) {
-      // console.log(data);
+      console.log(data);
+      urbanCityNameTest = data["_links"]["city:urban_area"]["name"];
+      var ua = urbanCityNameTest.replace(" ", "-");
+
+      console.log(urbanCityNameTest);
+
       urbanCityName = data["_links"]["city:urban_area"]["name"];
       console.log(urbanCityName);
       displayUrbanCityData(urbanCityName);
