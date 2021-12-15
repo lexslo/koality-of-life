@@ -3,34 +3,39 @@ h1, h2, h3, h4 {
     font-weight: bold;
 }
 
+h1 {
+    font-size: 4rem;
+    background-color: rgba(256, 256, 256, 0.55);
+    border-radius: 15px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
 header {
     text-align: center;
-    background-color:rgba(256,256,256, 0.4);
+    padding: 20px;
+    margin-bottom: 10px;
 }
 
 body {
-    background-image: url(../images/Sky-BG.png);
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: url(../images/city-bg.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .card {
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.33) 0px 3px 8px;
 }
 
 .button {
     border-radius: 5px;
 }
 
-.page-divide {
-    border-bottom: 3px solid #bbb;
-    max-width: 97vm;
-}
-
 .reveal {
-    background-image: linear-gradient(to bottom right, #97b7d1, #063154);
+    background-color: lightgrey;
 }
 
 .reveal a {
