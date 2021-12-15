@@ -12,7 +12,7 @@ $(document).ready(function () {
     response.json().then(function (data) {
       // call city function that will find city from ip address using ipstack
       city(data);
-      displayUserLocation(data.city, data.region_code);
+      //displayUserLocation(data.city, data.region_code);
     });
   });
 });
@@ -28,16 +28,23 @@ function displayUserLocation(city, state) {
 
 function city(ipLocation) {
   var city = ipLocation.city;
-  teleportURL = `${teleportCitySearch}hayward`;
+  var state = ipLocation.region_code;
+  teleportURL = `${teleportCitySearch}${city}`;
   console.log(teleportURL);
-
-  // call on teleport api to return object with geoname some where 1000 levels deep
-  fetch(teleportURL).then(function (response) {
-    response.json().then(function (data) {
-      obtainGeoID(data);
-      // console.log(data);
+  console.log(`${city}`);
+  if (`${city}` !== "undefined") {
+    // call on teleport api to return object with geoname some where 1000 levels deep
+    fetch(teleportURL).then(function (response) {
+        response.json().then(function (data) {
+        obtainGeoID(data);
+        displayUserLocation(city, state);
+        // console.log(data);
     });
   });
+  } else {
+      $("#undefined-btn").trigger("click");
+      $("#location-header").text("Search for a City");
+  }
 }
 
 function obtainGeoID(data) {
@@ -53,9 +60,15 @@ function obtainGeoID(data) {
   fetch(embeddedHREF).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
-      urbanCityName = data["_links"]["city:urban_area"]["name"];
+      urbanCityName = data["_links"]["city:urban_area"];
+        if (urbanCityName) {
+            urbanCityName = urbanCityName["name"];
+            displayUrbanCityData(urbanCityName);
+        } else {
+            // trigger hidden button to open modal window guiding user to Teleport site
+            $("#hidden-button").trigger('click');
+        }
       console.log(urbanCityName);
-      displayUrbanCityData(urbanCityName);
       // urbanCityScores = urbanCityHref + "scores";
 
       // fetch(urbanCityScores).then(function (response) {
@@ -74,10 +87,10 @@ function displayUrbanCityData(urbanCityName) {
   async
   class="teleport-widget-script"
   id="life-quality-score"
-  data-url="https://teleport.org/cities/${cityName}/widget/scores/?currency=USD"
+  data-url="http://teleport.org/cities/${cityName}/widget/scores/?currency=USD"
   data-max-width="770"
   data-height="950"
-  src="https://teleport.org/assets/firefly/widget-snippet.min.js"
+  src="http://teleport.org/assets/firefly/widget-snippet.min.js"
   ></script>`;
 
   // // console.log(lifeQualityScores);

@@ -37,6 +37,10 @@ body {
     color: white;
 }
 
+.hidden-button {
+    display: none;
+}
+
 footer {
     text-align: center;
     background-color:rgba(176, 214, 245, 0.6);

@@ -28,7 +28,7 @@
         <!-- take up half width on large/med screen, take up full width on small screen-->
         <form class="cell large-6 medium-6 small-12 card">
           <div class="card-divider">
-            <h3>You Are Here: <span id="user-ip-location"></span></h3>
+            <h3 id="location-header">You Are Here: <span id="user-ip-location"></span></h3>
           </div>
           <div class="card-section">
             <label for="city">Enter Your City</label>
@@ -36,7 +36,7 @@
               id="user-entry-location"
               name="city"
               type="text"
-              placeholder="New York, NY"
+              placeholder="New York"
             />
             <button
               type="submit"
@@ -50,7 +50,7 @@
               id="user-entry-comparison"
               name="compare-city"
               type="text"
-              placeholder="New York, NY"
+              placeholder="Dubai"
             />
             <button id="compare-btn" class="button expanded disabled">
               Compare
@@ -143,7 +143,7 @@
     <div class="reveal small" id="city-not-found" data-reveal>
       <h4>This city is not supported yet.</h4>
       <p class="lead">
-        Please go to
+        Try manually searching a different city. Please go to
         <a href="https://teleport.org/cities/" target="_blank">Teleport</a> to
         view the list of currently supported cities.
       </p>
@@ -157,8 +157,25 @@
       </button>
     </div>
 
+    <div class="reveal small" id="call-undefined" data-reveal>
+        <h4>IPstack limit reached.</h4>
+        <p class="lead">
+          Try manually searching for a city instead.
+        </p>
+        <button
+          class="close-button"
+          data-close
+          aria-label="Close modal"
+          type="button"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
     <footer>
       <h4>&copy2021 Koality of Life</h4>
+      <button id="hidden-button" data-open="city-not-found" class="hidden-button"></button>
+      <button id="undefined-btn" data-open="call-undefined" class="hidden-button"></button>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
