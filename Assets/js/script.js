@@ -1,6 +1,6 @@
-// initialize foundation
-$(document).foundation();
+// teleport api https://api.teleport.org/api/cities/
 
+// fetch location information from ipstack API
 var getUserLocation = function () {
 
     var apiUrl = "http://api.ipstack.com/134.201.250.155?access_key=5eb2ffeb687e846fd6b8eb7245538ec9";
@@ -9,7 +9,10 @@ var getUserLocation = function () {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(data){
+                    // pass city and state to displayUserLocation function
                     displayUserLocation(data.city, data.region_code);
+                    // pass latitude and longitude to getCityComparison function
+                    getCityComparison(data.latitude, data.longitude);
                 });
             } else {
                 console.log("connection failed");
@@ -24,6 +27,10 @@ var displayUserLocation = function (city, state) {
     $("#user-entry-location").val(city + ", " + state);
     // disable search button unless user wishes to change start city
     $("#search-btn").addClass("disabled");
+}
+
+var getCityComparison = function (lat, long) {
+
 }
 
 // enable search button if user goes to type in the first input field
@@ -48,3 +55,8 @@ $("#user-entry-comparison").on("blur", function() {
 
 //getUserLocation();
 displayUserLocation("Oakland", "CA");
+
+// initialize foundation
+$(document).ready(function () {
+    $(document).foundation();
+})
