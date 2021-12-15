@@ -12,7 +12,7 @@ var getUserLocation = function () {
                     // pass city and state to displayUserLocation function
                     displayUserLocation(data.city, data.region_code);
                     // pass latitude and longitude to getCityComparison function
-                    getCityComparison(data.latitude, data.longitude);
+                    // getGeonameId(data.city);
                 });
             } else {
                 console.log("connection failed");
