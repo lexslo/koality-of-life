@@ -1,3 +1,4 @@
+
 var displayUserLocation = function (city, state) {
     // set text display in card header to user location
     $("#user-ip-location").text(city + ", " + state);
