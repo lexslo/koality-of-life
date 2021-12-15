@@ -17,33 +17,36 @@ $(document).ready(function () {
   });
 });
 
-function displayUserLocation(city, state) {
+function displayUserLocation(city) {
   // set text display in card header to user location
-  $("#user-ip-location").text(city + ", " + state);
+  $("#user-ip-location").text(city);
   // auto fill search input with current location
-  $("#user-entry-location").val(city + ", " + state);
+  $("#user-entry-location").val(city);
   // disable search button unless user wishes to change start city
   $("#search-btn").addClass("disabled");
 }
 
+var userCityEntry = $("#user-entry-location").val();
+$("#search-btn").on("click", city(userCityEntry));
+
 function city(ipLocation) {
   var city = ipLocation.city;
-  var state = ipLocation.region_code;
+  // var city = "hayward";
   teleportURL = `${teleportCitySearch}${city}`;
   console.log(teleportURL);
   console.log(`${city}`);
   if (`${city}` !== "undefined") {
     // call on teleport api to return object with geoname some where 1000 levels deep
     fetch(teleportURL).then(function (response) {
-        response.json().then(function (data) {
+      response.json().then(function (data) {
         obtainGeoID(data);
-        displayUserLocation(city, state);
+        displayUserLocation(city);
         // console.log(data);
+      });
     });
-  });
   } else {
-      $("#undefined-btn").trigger("click");
-      $("#location-header").text("Search for a City");
+    $("#undefined-btn").trigger("click");
+    $("#location-header").text("Search for a City");
   }
 }
 
@@ -61,13 +64,13 @@ function obtainGeoID(data) {
     response.json().then(function (data) {
       console.log(data);
       urbanCityName = data["_links"]["city:urban_area"];
-        if (urbanCityName) {
-            urbanCityName = urbanCityName["name"];
-            displayUrbanCityData(urbanCityName);
-        } else {
-            // trigger hidden button to open modal window guiding user to Teleport site
-            $("#hidden-button").trigger('click');
-        }
+      if (urbanCityName) {
+        urbanCityName = urbanCityName["name"];
+        displayUrbanCityData(urbanCityName);
+      } else {
+        // trigger hidden button to open modal window guiding user to Teleport site
+        $("#hidden-button").trigger("click");
+      }
       console.log(urbanCityName);
       // urbanCityScores = urbanCityHref + "scores";
 
