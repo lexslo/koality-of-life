@@ -52,6 +52,10 @@ function city(ipLocation) {
   }
 }
 
+// $("#search-btn").click(manualSearch(userCityEntry)) this is not annonymous function
+// and for that reason reacts upon $(document).ready()
+// still sort of unclear why that is.... but will ask for clearer explaination
+// why if the function is outside of that doc.ready would you need an annonymous function?
 $("#search-btn").click(function () {
   var city = $("#user-entry-location").val();
   teleportURL = `${teleportCitySearch}${city}`;
