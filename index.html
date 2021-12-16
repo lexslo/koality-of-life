@@ -41,9 +41,9 @@
               placeholder="New York"
             />
             <button
-              type="submit"
               id="search-btn"
               class="button expanded disabled"
+              type="button"
             >
               Search
             </button>
@@ -54,7 +54,7 @@
               type="text"
               placeholder="Dubai"
             />
-            <button id="compare-btn" class="button expanded disabled">
+            <button id="compare-btn" class="button expanded disabled" type="button">
               Compare
             </button>
           </div>
@@ -102,7 +102,10 @@
                 aria-labelledby="panel1d-heading"
                 data-tab-content
               >
-                No saved searches.
+                <p id="no-search-text">No saved searches.</p>
+                <button data-id="0" class="button expanded storage-btn" type="button"></button>
+                <button data-id="1" class="button expanded storage-btn" type="button"></button>
+                <button data-id="2" class="button expanded storage-btn" type="button"></button>
               </div>
             </li>
           </ul>
