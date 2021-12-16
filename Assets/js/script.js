@@ -194,6 +194,17 @@ function loadSearch () {
     }
 }
 
+$(".storage-btn").on("click", function () {
+    // get text from button that was clicked
+    var btnText = $(this).text();
+    // split and remove the " vs. "
+    btnText = btnText.split(" vs. ");
+    // put text in proper input fields
+    $("#user-entry-location").val(btnText[0]);
+    $("#user-entry-comparison").val(btnText[1]);
+    $("#compare-btn").removeClass("disabled");
+})
+
 $("#compare-btn").on("click", function () {
     saveSearch();
 })
