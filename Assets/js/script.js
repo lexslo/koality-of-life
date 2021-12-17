@@ -1,4 +1,4 @@
-var ipStackKey = "5eb2ffeb687e846fd6b8eb7245538ec9";
+var ipStackKey = "461d8152858d27076ff2134be7a2531a";
 var ipStack = `http://api.ipstack.com/check?access_key=${ipStackKey}`;
 var teleportCitySearch = `https://api.teleport.org/api/cities/?search=`;
 
@@ -31,8 +31,8 @@ function displayUserLocation(city) {
 }
 
 function city(ipLocation) {
-  // var city = ipLocation.city;
-  var city = "undefined";
+  var city = ipLocation.city;
+  //var city = "undefined";
   teleportURL = `${teleportCitySearch}${city}`;
   //console.log(teleportURL);
   //console.log(`${city}`);
