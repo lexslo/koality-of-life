@@ -104,7 +104,7 @@ function obtainGeoID(data, button) {
         // trigger hidden button to open modal window guiding user to Teleport site
         $("#hidden-button").trigger("click");
       }
-      console.log(urbanCityName);
+      //console.log(urbanCityName);
       // urbanCityScores = urbanCityHref + "scores";
 
       // fetch(urbanCityScores).then(function (response) {
