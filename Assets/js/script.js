@@ -27,7 +27,7 @@ function displayUserLocation(city) {
   // disable search button unless user wishes to change start city
   $("#search-btn").addClass("disabled");
   // display city name to header of first comparison column
-  $("#user-city").text(" - " + city);
+  // $("#user-city").text(" - " + city);
 }
 
 function city(ipLocation) {
@@ -97,11 +97,14 @@ function obtainGeoID(data, button) {
       } else if (urbanCityName && button === false) {
         urbanCityName = urbanCityName["name"];
         displayUrbanCityData(urbanCityName, false);
+      } else if (urbanCityName) {
+        urbanCityName = urbanCityName["name"];
+        displayUrbanCityData(urbanCityName, true);
       } else {
         // trigger hidden button to open modal window guiding user to Teleport site
         $("#hidden-button").trigger("click");
       }
-      console.log(urbanCityName);
+      //console.log(urbanCityName);
       // urbanCityScores = urbanCityHref + "scores";
 
       // fetch(urbanCityScores).then(function (response) {
@@ -243,6 +246,7 @@ $(".storage-btn").on("click", function () {
   // put text in proper input fields
   $("#user-entry-location").val(btnText[0]);
   $("#user-entry-comparison").val(btnText[1]);
+  $("#location-header").text("Search for a City");
   $("#search-btn").trigger("click");
   $("#compare-btn").trigger("click");
 });
