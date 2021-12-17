@@ -129,7 +129,9 @@ function displayUrbanCityData(urbanCityName, button) {
   ></script>`;
 
     // // console.log(lifeQualityScores);
-    $("#user-results").append(lifeQualityScores);
+    $(".first-city").children("iframe").remove();
+    $(".first-city").append($("<div></div>").attr("id","city-one"));
+    $(".first-city").append(lifeQualityScores);
   } else if (button === false) {
     var lifeQualityScores = `<script
     async
@@ -142,7 +144,9 @@ function displayUrbanCityData(urbanCityName, button) {
     ></script>`;
 
     // // console.log(lifeQualityScores);
-    $("#results-comparison").append(lifeQualityScores);
+    $(".second-city").children("iframe").remove();
+    $(".second-city").append($("<div></div>").attr("id","city-two"));
+    $(".second-city").append(lifeQualityScores);
   }
 }
 
@@ -183,7 +187,7 @@ function saveSearch() {
     // add the array of 2 cities to object at next index
     prevSearchObj[counter] = prevSearchArr;
     // store a maximum of 3 previous searches
-    console.log("counter = " + counter + " from saveSearch");
+    //console.log("counter = " + counter + " from saveSearch");
     if (counter == 3) {
       counter = 0;
     } else {
@@ -194,7 +198,7 @@ function saveSearch() {
 }
 
 function loadSearch() {
-  console.log("counter = " + counter + " from loadSearch");
+  //console.log("counter = " + counter + " from loadSearch");
   // variable to hold localstorage string
   var searches = localStorage.getItem("search");
   // check if anything is stored, hide the "no searches" message if there are stored items
@@ -215,7 +219,7 @@ function loadSearch() {
   } else {
     counter = numStored;
   }
-  console.log("numStored = " + numStored);
+  //console.log("numStored = " + numStored);
   // hide empty buttons depending on how many items are in storage
   if (numStored === 2) {
     $(`[data-id='2']`).hide();
@@ -239,7 +243,8 @@ $(".storage-btn").on("click", function () {
   // put text in proper input fields
   $("#user-entry-location").val(btnText[0]);
   $("#user-entry-comparison").val(btnText[1]);
-  $("#compare-btn").removeClass("disabled");
+  $("#search-btn").trigger("click");
+  $("#compare-btn").trigger("click");
 });
 
 $("#compare-btn").on("click", function () {
