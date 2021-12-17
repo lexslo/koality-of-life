@@ -97,6 +97,9 @@ function obtainGeoID(data, button) {
       } else if (urbanCityName && button === false) {
         urbanCityName = urbanCityName["name"];
         displayUrbanCityData(urbanCityName, false);
+      } else if (urbanCityName) {
+        urbanCityName = urbanCityName["name"];
+        displayUrbanCityData(urbanCityName, true);
       } else {
         // trigger hidden button to open modal window guiding user to Teleport site
         $("#hidden-button").trigger("click");
