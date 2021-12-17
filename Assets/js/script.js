@@ -48,7 +48,6 @@ function city(ipLocation) {
   } else {
     $("#undefined-btn").trigger("click");
     $("#location-header").text("Search for a City");
-    return;
   }
 }
 
@@ -78,7 +77,7 @@ $("#compare-btn").click(function () {
 });
 
 function obtainGeoID(data, button) {
-  // console.log(data);
+  console.log(data);
   // geonameid URL some where in here and pass into obtainUrbanCityScores function
   var embeddedHREF =
     data._embedded["city:search-results"][0]["_links"]["city:item"]["href"];
