@@ -27,7 +27,7 @@ function displayUserLocation(city) {
   // disable search button unless user wishes to change start city
   $("#search-btn").addClass("disabled");
   // display city name to header of first comparison column
-  $("#user-city").text(" - " + city);
+  // $("#user-city").text(" - " + city);
 }
 
 function city(ipLocation) {
@@ -243,6 +243,7 @@ $(".storage-btn").on("click", function () {
   // put text in proper input fields
   $("#user-entry-location").val(btnText[0]);
   $("#user-entry-comparison").val(btnText[1]);
+  $("#location-header").text("Search for a City");
   $("#search-btn").trigger("click");
   $("#compare-btn").trigger("click");
 });
