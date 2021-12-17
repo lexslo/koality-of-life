@@ -31,9 +31,8 @@ function displayUserLocation(city) {
 }
 
 function city(ipLocation) {
-  // var city = ipLocation.city;
-  // this is necessary because IPSTACK only provides https on paid versioning and git doesn't like http
-  var city = "undefined";
+  var city = ipLocation.city;
+  //var city = "undefined";
   teleportURL = `${teleportCitySearch}${city}`;
   //console.log(teleportURL);
   //console.log(`${city}`);
@@ -133,7 +132,7 @@ function displayUrbanCityData(urbanCityName, button) {
 
     // // console.log(lifeQualityScores);
     $(".first-city").children("iframe").remove();
-    $(".first-city").append($("<div></div>").attr("id", "city-one"));
+    $(".first-city").append($("<div></div>").attr("id","city-one"));
     $(".first-city").append(lifeQualityScores);
   } else if (button === false) {
     var lifeQualityScores = `<script
@@ -148,7 +147,7 @@ function displayUrbanCityData(urbanCityName, button) {
 
     // // console.log(lifeQualityScores);
     $(".second-city").children("iframe").remove();
-    $(".second-city").append($("<div></div>").attr("id", "city-two"));
+    $(".second-city").append($("<div></div>").attr("id","city-two"));
     $(".second-city").append(lifeQualityScores);
   }
 }
