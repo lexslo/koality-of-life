@@ -9,16 +9,24 @@ var counter = 0;
 // on dom load, run foundation & ipstack
 $(document).ready(function () {
   $(document).foundation();
+  // load with IPStack limit modal triggered since GitHub doesn't support HTTP
+  limitReached();
   loadSearch();
 
-  // call ipstack API
-  fetch(ipStack).then(function (response) {
-    response.json().then(function (data) {
-      // call city function that will find city from ip address using ipstack
-      city(data);
-    });
-  });
+// ** NOT WORKING ON GITHUB, UNCOMMENT ON LOCAL MACHINE TO TEST ** 
+//   // call ipstack API
+//   fetch(ipStack).then(function (response) {
+//     response.json().then(function (data) {
+//       // call city function that will find city from ip address using ipstack
+//       city(data);
+//     });
+//   });
 });
+
+function limitReached () {
+    $("#undefined-btn").trigger("click");
+    $("#location-header").text("Search for a City");
+}
 
 function displayUserLocation(city) {
   // set text display in card header to user location
@@ -27,36 +35,27 @@ function displayUserLocation(city) {
   $("#user-entry-location").val(city);
   // disable search button unless user wishes to change start city
   $("#search-btn").addClass("disabled");
-  // display city name to header of first comparison column
-  // $("#user-city").text(" - " + city);
 }
 
 function city(ipLocation) {
-  // var city = ipLocation.city;
+  var city = ipLocation.city;
   // this is necessary because IPSTACK only provides https on paid versioning and git doesn't like http
-  var city = "undefined";
+  // var city = "undefined";
   teleportURL = `${teleportCitySearch}${city}`;
-  //console.log(teleportURL);
-  //console.log(`${city}`);
+
   if (`${city}` !== "undefined") {
     // call on teleport api to return object with geoname some where 1000 levels deep
     fetch(teleportURL).then(function (response) {
       response.json().then(function (data) {
         obtainGeoID(data);
         displayUserLocation(city);
-        // console.log(data);
       });
     });
   } else {
-    $("#undefined-btn").trigger("click");
-    $("#location-header").text("Search for a City");
+    limitReached();
   }
 }
 
-// $("#search-btn").click(manualSearch(userCityEntry)) this is not annonymous function
-// and for that reason reacts upon $(document).ready()
-// still sort of unclear why that is.... but will ask for clearer explaination
-// why if the function is outside of that doc.ready would you need an annonymous function?
 $("#search-btn").click(function () {
   var city = $("#user-entry-location").val();
   teleportURL = `${teleportCitySearch}${city}`;
@@ -83,14 +82,11 @@ function obtainGeoID(data, button) {
   // geonameid URL some where in here and pass into obtainUrbanCityScores function
   var embeddedHREF =
     data._embedded["city:search-results"][0]["_links"]["city:item"]["href"];
-  //console.log(embeddedHREF);
-
-  // var urbanCity = embeddedHREF["city:urban_area"];
 
   // run teleport api for urban city name by geonameid
   fetch(embeddedHREF).then(function (response) {
     response.json().then(function (data) {
-      //console.log(data);
+
       urbanCityName = data["_links"]["city:urban_area"];
       if (urbanCityName && button === true) {
         urbanCityName = urbanCityName["name"];
@@ -105,14 +101,6 @@ function obtainGeoID(data, button) {
         // trigger hidden button to open modal window guiding user to Teleport site
         $("#hidden-button").trigger("click");
       }
-      //console.log(urbanCityName);
-      // urbanCityScores = urbanCityHref + "scores";
-
-      // fetch(urbanCityScores).then(function (response) {
-      //   response.json().then(function (data) {
-      //     // console.log(data);
-      //   });
-      // });
     });
   });
 }
@@ -131,8 +119,7 @@ function displayUrbanCityData(urbanCityName, button) {
   data-height="950"
   src="http://teleport.org/assets/firefly/widget-snippet.min.js"
   ></script>`;
-
-    // // console.log(lifeQualityScores);
+    // clear iframe to write new one on next search
     $(".first-city").children("iframe").remove();
     $(".first-city").append($("<div></div>").attr("id", "city-one"));
     $(".first-city").append(lifeQualityScores);
@@ -146,8 +133,7 @@ function displayUrbanCityData(urbanCityName, button) {
     data-height="950"
     src="http://teleport.org/assets/firefly/widget-snippet.min.js"
     ></script>`;
-
-    // // console.log(lifeQualityScores);
+    // clear iframe to write new one on next search
     $(".second-city").children("iframe").remove();
     $(".second-city").append($("<div></div>").attr("id", "city-two"));
     $(".second-city").append(lifeQualityScores);
@@ -191,7 +177,6 @@ function saveSearch() {
     // add the array of 2 cities to object at next index
     prevSearchObj[counter] = prevSearchArr;
     // store a maximum of 3 previous searches
-    //console.log("counter = " + counter + " from saveSearch");
     if (counter == 3) {
       counter = 0;
     } else {
@@ -202,7 +187,7 @@ function saveSearch() {
 }
 
 function loadSearch() {
-  //console.log("counter = " + counter + " from loadSearch");
+
   // variable to hold localstorage string
   var searches = localStorage.getItem("search");
   // check if anything is stored, hide the "no searches" message if there are stored items
@@ -223,7 +208,7 @@ function loadSearch() {
   } else {
     counter = numStored;
   }
-  //console.log("numStored = " + numStored);
+
   // hide empty buttons depending on how many items are in storage
   if (numStored === 2) {
     $(`[data-id='2']`).hide();
