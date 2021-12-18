@@ -1,5 +1,4 @@
 var ipStackKey = "461d8152858d27076ff2134be7a2531a";
-// commenting out line #3 this is necessary because IPSTACK only provides https on paid versioning and git doesn't like http
 // var ipStack = `http://api.ipstack.com/check?access_key=${ipStackKey}`;
 var teleportCitySearch = `https://api.teleport.org/api/cities/?search=`;
 
