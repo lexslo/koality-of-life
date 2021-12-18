@@ -9,9 +9,9 @@ var counter = 0;
 // on dom load, run foundation & ipstack
 $(document).ready(function () {
   $(document).foundation();
-  loadSearch();
   // load with IPStack limit modal triggered since GitHub doesn't support HTTP
-  $("#undefined-btn").trigger("click");
+  limitReached();
+  loadSearch();
 
 // ** NOT WORKING ON GITHUB, UNCOMMENT ON LOCAL MACHINE TO TEST ** 
 //   // call ipstack API
@@ -23,6 +23,11 @@ $(document).ready(function () {
 //   });
 });
 
+function limitReached () {
+    $("#undefined-btn").trigger("click");
+    $("#location-header").text("Search for a City");
+}
+
 function displayUserLocation(city) {
   // set text display in card header to user location
   $("#user-ip-location").text(city);
@@ -33,9 +38,9 @@ function displayUserLocation(city) {
 }
 
 function city(ipLocation) {
-  // var city = ipLocation.city;
+  var city = ipLocation.city;
   // this is necessary because IPSTACK only provides https on paid versioning and git doesn't like http
-  var city = "undefined";
+  // var city = "undefined";
   teleportURL = `${teleportCitySearch}${city}`;
 
   if (`${city}` !== "undefined") {
@@ -47,8 +52,7 @@ function city(ipLocation) {
       });
     });
   } else {
-    $("#undefined-btn").trigger("click");
-    $("#location-header").text("Search for a City");
+    limitReached();
   }
 }
 
