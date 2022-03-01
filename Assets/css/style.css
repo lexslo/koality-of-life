@@ -1,4 +1,7 @@
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
 }
@@ -19,7 +22,7 @@ header {
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-image: url("../Images/city-bg.png");
+    background-image: url("../images/city-bg.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -54,5 +57,5 @@ body {
 
 footer {
     text-align: center;
-    background-color:rgba(176, 214, 245, 0.6);
+    background-color: rgba(176, 214, 245, 0.6);
 }
