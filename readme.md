@@ -17,10 +17,9 @@ I WANT to use an app use an app that uses my location to tell me about the quali
 SO THAT I can learn more about my community
 SO THAT I can also learn more about others
 
-## APIs
+## 3rd Party API
 
-1. [IPSTACK](https://ipstack.com/documentation) – Locate and identify website visitors by IP address
-2. [TELEPORT](https://developers.teleport.org/api/) – Data insight to quality of life depending on city
+[TELEPORT](https://developers.teleport.org/api/) – Data insight to quality of life depending on city
 
 ## Acceptance Criteria
 - When a user visits the page, their current location is displayed. (*Not working on GitHub since HTTP is not supported and IPStack requires payment for HTTPS*)
