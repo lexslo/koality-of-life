@@ -18,25 +18,6 @@ function displayUserLocation(city) {
     $("#search-btn").addClass("disabled");
 }
 
-// function city(ipLocation) {
-//     var city = ipLocation.city;
-//     // this is necessary because IPSTACK only provides https on paid versioning and git doesn't like http
-//     // var city = "undefined";
-//     teleportURL = `${teleportCitySearch}${city}`;
-
-//     if (`${city}` !== "undefined") {
-//         // call on teleport api to return object with geoname some where 1000 levels deep
-//         fetch(teleportURL).then(function(response) {
-//             response.json().then(function(data) {
-//                 obtainGeoID(data);
-//                 displayUserLocation(city);
-//             });
-//         });
-//     } else {
-//         limitReached();
-//     }
-// }
-
 $("#search-btn").click(function() {
 
     var city = $("#user-entry-location").val();

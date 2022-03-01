@@ -37,4 +37,4 @@ SO THAT I can also learn more about others
 
 ### Link
 
-[Koality of Life](https://Charlton-H.github.io/quality-of-life-setup/)
+[Koality of Life](https://lexslo.github.io/koality-of-life/)
